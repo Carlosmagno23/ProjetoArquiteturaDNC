@@ -1,10 +1,14 @@
 import './ContactForm.css'
-import  { useState, useEffect } from 'react'
+import  { useContext, useState, useEffect } from 'react'
 
 //COMPONENTS
 import Button from '../Button/Button'
 
+// CONTEXT
+import { AppContext } from '../../contexts/AppContext'
+
 function ContactForm() {
+    const appContext = useContext(AppContext)
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -61,7 +65,7 @@ function ContactForm() {
 
     return(
             <div className='contact-form d-flex fd-column al-center'>
-                <h2>We love meeting new people and helping them.</h2>
+                <h2>{appContext.languages[appContext.language].contact.title}</h2>
                 <form onSubmit={handleSubmit}>
                     <div className='d-flex form-group'>
                         <input
@@ -69,7 +73,7 @@ function ContactForm() {
                             type='text'
                             id='name'
                             name='name'
-                            placeholder='Name *'
+                            placeholder={appContext.languages[appContext.language].contact.pl1}
                             onChange={handleChange}              
                         />
                         <input
@@ -77,7 +81,7 @@ function ContactForm() {
                             type='email'
                             id='email'
                             name='email'
-                            placeholder='Email *'
+                            placeholder={appContext.languages[appContext.language].contact.pl2}
                             onChange={handleChange}              
                         />
                     </div>
@@ -86,15 +90,15 @@ function ContactForm() {
                             className='form-input'
                             id='message'
                             name='message'
-                            placeholder='Messagem *'
+                            placeholder={appContext.languages[appContext.language].contact.pl3}
                             onChange={handleChange}
                             rows="4"
                         >
                         </textarea>
                     </div>
                     <div className='al-center d-flex jc-end form-group'>
-                        {formSubmitted && <p className='text-primary'>Sucesso</p>}
-                        <Button type="submit" buttonStyle="secondary" disabled={!isFormValid || formSubmitLoading}>Enviar</Button>
+                        {formSubmitted && <p className='text-primary'>{appContext.languages[appContext.language].contact.successMsg}</p>}
+                        <Button type="submit" buttonStyle="secondary" disabled={!isFormValid || formSubmitLoading}>{appContext.languages[appContext.language].general.send}</Button>
                     </div>
                 </form>
             </div>       

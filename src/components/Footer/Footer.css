@@ -50,6 +50,10 @@ footer .social-links a {
     column-gap: 23px;
 }
 
+.image-button {
+  all: unset;
+  cursor: pointer;
+}
 
 @media (max-width: 768px) {
     .footer-logo-col {
