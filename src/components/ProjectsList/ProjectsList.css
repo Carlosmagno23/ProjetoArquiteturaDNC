@@ -36,6 +36,11 @@
     margin: 20px 0 0 0;
 }
 
+.image-button {
+  all: unset;
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
     .projects-grid {
     grid-template-columns: repeat(2, 1fr); 
